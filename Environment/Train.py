@@ -116,7 +116,7 @@ class DQN(object):
         b_a = torch.LongTensor(b_a)  # 取出a
         b_r = torch.FloatTensor(b_r)  # 取出r
         b_s_ = torch.FloatTensor(b_s_)  # 取出s_
-        print(b_s.size(), b_a.size())
+        #print(b_s.size(), b_a.size())
         # 针对做过的动作b_a, 来选 q_eval 的值, (q_eval 原本有所有动作的值)
         # t = self.eval_net(b_s) 个人感觉，gather使得代码更加优雅。实际是一个从t中进行索引的东西。
         # gather 是按照index拿出目标索引的函数，第一个输入为dim.
@@ -176,7 +176,8 @@ def main():
             if done == 1 or done == 2:    # 如果回合结束, 进入下回合
                 if done == 1:
                     print('epoch', i_episode, '失败')
-                    print(a_lib)
+                    #print(a_lib)
+                    #append_totxt(r'D:\GitHub\DQN\data_saved\action_001.pickle',[a_lib])
                     a_lib = []
                     break
 
@@ -184,6 +185,7 @@ def main():
                     print('epoch', i_episode, '成功')
                     print(a_lib)
                     a_saved.append(a_lib)
+                    append_totxt(r'D:\GitHub\DQN\data_saved\action_001.pickle',[a_lib])
                     a_lib = []
                     break
 
